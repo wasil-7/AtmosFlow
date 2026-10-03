@@ -1,0 +1,9 @@
+torch==2.13.0
+torchvision
+torchaudio
+darts==0.46.1
+xgboost==3.4.0
+fastapi==0.139.2
+uvicorn==0.51.0
+matplotlib==3.11.1
+weasyprint

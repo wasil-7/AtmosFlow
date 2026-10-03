@@ -1,0 +1,8 @@
+# Environments & Caches
+.venv/
+__pycache__/
+node_modules/
+
+# Ignore large archives or messy old code
+archive/
+

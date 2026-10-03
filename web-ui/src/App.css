@@ -1,0 +1,98 @@
+/* ── Dashboard Layout ── */
+.dashboard-map-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 140px);
+  min-height: 500px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.floating-sidebar {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  width: 280px;
+  z-index: 1000;
+  max-height: calc(100% - 2rem);
+  overflow-y: auto;
+}
+
+.floating-nowcast {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 320px;
+  z-index: 1000;
+}
+
+.floating-bottom-tray {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 1rem 1rem;
+}
+
+/* ── Tray Expand/Collapse ── */
+.tray-content {
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Tab Content Wrapper ── */
+.tab-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Chart Grid ── */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .chart-grid { grid-template-columns: 1fr; }
+  .floating-sidebar { width: 240px; }
+  .floating-nowcast { width: 260px; }
+}
+@media (max-width: 640px) {
+  .floating-sidebar, .floating-nowcast {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .dashboard-map-container { height: 50vh; }
+}
+
+/* ── Risk Matrix Cell ── */
+.risk-cell {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 0.5rem; border-radius: 0.5rem;
+  font-size: 10px; font-weight: 700;
+  transition: transform 0.15s ease;
+}
+.risk-cell:hover { transform: scale(1.05); }
+.risk-low { background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0; }
+.risk-med { background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A; }
+.risk-high { background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; }
+
+/* ── MLOps Pulse Indicators ── */
+@keyframes onlinePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(5, 150, 105, 0); }
+}
+.pulse-online {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #059669;
+  animation: onlinePulse 2s ease-in-out infinite;
+}
+.pulse-offline {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #DC2626;
+}
+.pulse-standby {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #D97706;
+}

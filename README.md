@@ -66,11 +66,16 @@ cd weather-predictory
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
+```
 
 #### 2. Run API & Routing Backend
+```bash
 uvicorn main:app --reload --port 8000
+```
 
 #### 3. Execute Model Retraining Cycle
+```bash
 python retrain_pipeline.py
 # Or run via orchestrator:
 ./run_mlops.bat
+```
